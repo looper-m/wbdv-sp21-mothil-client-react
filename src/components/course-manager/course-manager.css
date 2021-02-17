@@ -1,0 +1,32 @@
+.wbdv-input-group-align {
+    padding-top: inherit;
+    border-top-width: medium;
+}
+
+.wbdv-add-course-icon-color {
+    color: orange;
+}
+
+.wbdv-rm-round-corners {
+    border-radius: 0;
+}
+
+.wbdv-sticky-offset {
+    top: 64px;
+}
+
+.wbdv-float-btn {
+    position: fixed;
+    right: 45px;
+    bottom: 40px;
+    color: indianred;
+    border-radius: 50px;
+}
+
+table td {
+    vertical-align: middle;
+}
+
+table tr th:nth-child(4) {
+    min-width: 133px;
+}

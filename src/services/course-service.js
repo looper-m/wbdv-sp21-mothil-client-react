@@ -1,5 +1,5 @@
 export default class CourseService {
-    url = 'https://wbdv-generic-server.herokuapp.com/api/001373547/users';
+    url = 'https://wbdv-generic-server.herokuapp.com/api/001373547/courses';
 
     createCourse = course =>
         fetch(this.url, {

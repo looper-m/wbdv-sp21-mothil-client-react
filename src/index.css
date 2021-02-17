@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.wbdv-standalone-text-color, .wbdv-fas-color {
+  color: #646464;
+  outline-color: #a9a9a9;
+}
+
+.wbdv-blueboard-color {
+  color: #017cfe;
+}
+
+.wbdv-blueboard-bg-comp-color {
+  background-color: #646464 !important;
+}
+
+.wbdv-bg-ash {
+  background-color: #e9ecef;
+}
+
+.wbdv-overlay-text-color {
+  color: whitesmoke;
+}
+
+.wbdv-sub-text-size {
+  font-size: smaller;
+}
+
+.wbdv-lite-text-shadow {
+  text-shadow: 3px 3px 5px #ebebeb;
+}
