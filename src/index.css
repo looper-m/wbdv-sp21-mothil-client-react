@@ -1,42 +1,48 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 .wbdv-standalone-text-color, .wbdv-fas-color {
-  color: #646464;
-  outline-color: #a9a9a9;
+    color: #646464;
+    outline-color: #a9a9a9;
 }
 
 .wbdv-blueboard-color {
-  color: #017cfe;
+    color: #017cfe;
 }
 
 .wbdv-blueboard-bg-comp-color {
-  background-color: #646464 !important;
+    background-color: #646464 !important;
 }
 
 .wbdv-bg-ash {
-  background-color: #e9ecef;
+    background-color: #e9ecef;
 }
 
 .wbdv-overlay-text-color {
-  color: whitesmoke;
+    color: whitesmoke;
 }
 
 .wbdv-sub-text-size {
-  font-size: smaller;
+    font-size: smaller;
 }
 
 .wbdv-lite-text-shadow {
-  text-shadow: 3px 3px 5px #ebebeb;
+    text-shadow: 3px 3px 5px #ebebeb;
+}
+
+.wbdv-text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

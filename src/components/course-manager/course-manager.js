@@ -1,17 +1,11 @@
 import React, {Component} from "react"
+import {Redirect, Route} from "react-router-dom"
 import CourseService from "../../services/course-service"
-import DismissibleAlert from "../dismissible-alert"
+import DismissibleAlert, {alertType} from "../dismissible-alert"
 import LoadingBar from "react-top-loading-bar"
+import CourseTable from "../course-table/course-table"
+import CourseGrid from "../course-grid/course-grid"
 import "./course-manager.css"
-import CourseTable from "../course-table"
-// import CourseGrid from "../course-grid"
-
-const alertType = {
-    WARNING: "alert-warning",
-    ERROR: "alert-danger",
-    SUCCESS: "alert-success",
-    INFO: "alert-info"
-}
 
 //todo set more alerts, sticky add course bottom right
 class CourseManager extends Component {
@@ -19,7 +13,6 @@ class CourseManager extends Component {
         super(props)
         this.state = {
             courses: [],
-            toggleView: true,
             alert: null,
             newCourseValue: "",
             updatedCourseValue: ""
@@ -52,8 +45,10 @@ class CourseManager extends Component {
         this.loadingRef.current.continuousStart()
 
         this.courseService.deleteCourse(courseId).then(() => {
-            let filteredCourses = this.state.courses.filter(course => course._id !== courseId)
-            this.setState({courses: filteredCourses})
+            this.setState(prevState => ({
+                ...prevState,
+                courses: prevState.courses.filter(course => course._id !== courseId)
+            }))
         }).finally(() => this.loadingRef.current.complete())
     }
 
@@ -67,12 +62,13 @@ class CourseManager extends Component {
 
         this.courseService.findCourseById(courseId).then(retrievedCourse => {
             if (title === retrievedCourse.title || title === "") return
-            let updatedCourse = {...retrievedCourse, title: title}
+            let updatedCourse = {...retrievedCourse, title}
             this.courseService.updateCourse(retrievedCourse._id, updatedCourse).then(() => {
-                let tCourses = this.state.courses // todo change to direct deconstruction like alert below
-                let index = tCourses.findIndex(course => course._id === updatedCourse._id)
-                tCourses[index] = updatedCourse
-                this.setState({courses: tCourses})
+                this.setState(prevState => {
+                    let newState = {...prevState}
+                    newState.courses[newState.courses.findIndex(course => course._id === updatedCourse._id)] = updatedCourse
+                    return newState
+                })
             })
         }).catch(() => {
             this.setState({
@@ -93,10 +89,6 @@ class CourseManager extends Component {
         this.courseService.findAllCourses().then(retrievedCourses => {
             this.setState({courses: retrievedCourses})
         }).finally(() => this.loadingRef.current.complete())
-    }
-
-    handleToggleView = () => {
-        this.setState({toggleView: !this.state.toggleView})
     }
 
     dismissAlert = () => {
@@ -153,18 +145,18 @@ class CourseManager extends Component {
                     }
                     <br/>
 
-                    {/*{this.state.toggleView ?*/}
-                    {/*    <CourseGrid courses={this.state.courses}*/}
-                    {/*                onDelete={this.handleDeleteCourse}*/}
-                    {/*                onChangeTitle={this.handleUpdateCourseChange}*/}
-                    {/*                onUpdate={this.handleUpdateCourse}*/}
-                    {/*                onToggleView={this.handleToggleView}/> :*/}
+                    <Route path="/courses/grid">
+                        <CourseGrid courses={this.state.courses}
+                                    onDelete={this.handleDeleteCourse}
+                                    onChangeTitle={this.handleUpdateCourseChange}
+                                    onUpdate={this.handleUpdateCourse}/>
+                    </Route>
+                    <Route path="/" exact>
                         <CourseTable courses={this.state.courses}
                                      onDelete={this.handleDeleteCourse}
                                      onChangeTitle={this.handleUpdateCourseChange}
-                                     onUpdate={this.handleUpdateCourse}
-                                     onToggleView={this.handleToggleView}/>
-                    {/*}*/}
+                                     onUpdate={this.handleUpdateCourse}/>
+                    </Route>
                 </div>
             </div>
         )

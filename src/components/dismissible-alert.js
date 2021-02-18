@@ -1,3 +1,10 @@
+export const alertType = {
+    WARNING: "alert-warning",
+    ERROR: "alert-danger",
+    SUCCESS: "alert-success",
+    INFO: "alert-info"
+}
+
 const DismissibleAlert = (props) => {
     const alertClass = "alert " + (props.type)
     return (

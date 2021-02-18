@@ -1,19 +1,22 @@
-import CourseManager from "./components/course-manager/course-manager";
-import {Switch, Route, BrowserRouter as Router} from "react-router-dom";
-import CourseEditor from "./components/course-editor";
+import CourseManager from "./components/course-manager/course-manager"
+import {Switch, Route, BrowserRouter as Router, Redirect} from "react-router-dom"
+import CourseEditor from "./components/course-editor"
+import React from "react"
 
-const App = () =>
-    <div>
+const App = () => {
+    return (
         <Router>
             <Switch>
-                <Route path="/course-editor/:id">
-                    <CourseEditor/>
+                <Route path="/courses/course-editor/:title/:id"
+                       render={(props) => <CourseEditor {...props}/>}>
                 </Route>
                 <Route path="/">
-                    <CourseManager/>
+                <CourseManager/>
                 </Route>
+
             </Switch>
         </Router>
-    </div>
+    )
+}
 
 export default App;
