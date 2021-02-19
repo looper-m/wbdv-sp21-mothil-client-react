@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import {Redirect, Route} from "react-router-dom"
+import {Route} from "react-router-dom"
 import CourseService from "../../services/course-service"
 import DismissibleAlert, {alertType} from "../dismissible-alert"
 import LoadingBar from "react-top-loading-bar"
@@ -7,7 +7,6 @@ import CourseTable from "../course-table/course-table"
 import CourseGrid from "../course-grid/course-grid"
 import "./course-manager.css"
 
-//todo set more alerts, sticky add course bottom right
 class CourseManager extends Component {
     constructor(props) {
         super(props)
@@ -34,7 +33,13 @@ class CourseManager extends Component {
         }
 
         this.courseService.createCourse(course).then(actualCourse => {
-            this.setState({courses: [...this.state.courses, actualCourse]})
+            this.setState(prevState => ({
+                courses: [...prevState.courses, actualCourse],
+                alert: {
+                    type: alertType.SUCCESS,
+                    message: <span>New course <strong>added successfully</strong>!</span>
+                }
+            }))
         }).finally(() => {
             this.loadingRef.current.complete()
             this.setState({newCourseValue: ""})
@@ -47,7 +52,11 @@ class CourseManager extends Component {
         this.courseService.deleteCourse(courseId).then(() => {
             this.setState(prevState => ({
                 ...prevState,
-                courses: prevState.courses.filter(course => course._id !== courseId)
+                courses: prevState.courses.filter(course => course._id !== courseId),
+                alert: {
+                    type: alertType.SUCCESS,
+                    message: <span>Course <strong>deleted successfully</strong>!</span>
+                }
             }))
         }).finally(() => this.loadingRef.current.complete())
     }
@@ -61,12 +70,24 @@ class CourseManager extends Component {
         let title = this.state.updatedCourseValue
 
         this.courseService.findCourseById(courseId).then(retrievedCourse => {
-            if (title === retrievedCourse.title || title === "") return
+            if (title === retrievedCourse.title || title === "") {
+                this.setState({
+                    alert: {
+                        type: alertType.INFO,
+                        message: <span>Nothing to update.</span>
+                    }
+                })
+                return
+            }
             let updatedCourse = {...retrievedCourse, title}
             this.courseService.updateCourse(retrievedCourse._id, updatedCourse).then(() => {
                 this.setState(prevState => {
                     let newState = {...prevState}
                     newState.courses[newState.courses.findIndex(course => course._id === updatedCourse._id)] = updatedCourse
+                    newState.alert = {
+                        type: alertType.SUCCESS,
+                        message: <span>Course <strong>updated successfully</strong>!</span>
+                    }
                     return newState
                 })
             })
@@ -139,13 +160,13 @@ class CourseManager extends Component {
                     </div>
                 </nav>
                 <div className="container-fluid">
+                    <br/>
                     {alert && <DismissibleAlert type={this.state.alert.type}
                                                 message={this.state.alert.message}
                                                 dismiss={this.dismissAlert}/>
                     }
-                    <br/>
 
-                    <Route path="/courses/grid">
+                    <Route path="/courses/grid" exact>
                         <CourseGrid courses={this.state.courses}
                                     onDelete={this.handleDeleteCourse}
                                     onChangeTitle={this.handleUpdateCourseChange}
@@ -157,6 +178,10 @@ class CourseManager extends Component {
                                      onChangeTitle={this.handleUpdateCourseChange}
                                      onUpdate={this.handleUpdateCourse}/>
                     </Route>
+                    <div className="wbdv-float-btn shadow">
+                        <i className="fas fa-plus-circle fa-4x"
+                           onClick={this.handleCreateCourse}/>
+                    </div>
                 </div>
             </div>
         )
