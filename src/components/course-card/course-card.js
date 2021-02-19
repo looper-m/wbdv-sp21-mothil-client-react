@@ -16,9 +16,11 @@ const CourseCard = (props) => {
         props.onUpdate(props.course._id)
         props.setEditId(null)
     }
+
     const onDelete = () => {
         props.onDelete(props.course._id)
     }
+
     const setEditId = () => {
         props.setEditId(props.course._id)
     }

@@ -122,6 +122,7 @@ class CourseManager extends Component {
 
     render() {
         const {alert} = this.state;
+
         return (
             <div>
                 <LoadingBar

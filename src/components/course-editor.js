@@ -9,20 +9,46 @@ const CourseEditor = ({history, match}) => {
                         {match.params.title}
                     </h3>
                 </span>
-                <button className="navbar-toggler border-0" type="button" data-toggle="collapse"
+                <button className="navbar-toggler border-0"
+                        type="button"
+                        data-toggle="collapse"
                         data-target="#wbdv-editor-navbar"
-                        aria-controls="wbdv-editor-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                        aria-controls="wbdv-editor-navbar"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
                     <span className="fas fa-bars fa-lg wbdv-overlay-text-color pt-0 mt-0"/>
                 </button>
-                <div className="collapse navbar-collapse" id="wbdv-editor-navbar">
+                <div className="collapse navbar-collapse"
+                     id="wbdv-editor-navbar">
                     <div className="navbar-nav">
-                        <a className="nav-item nav-link pr-4" href="#">Build</a>
-                        <a className="nav-item nav-link active pr-4" href="#">Pages</a>
-                        <a className="nav-item nav-link pr-4" href="#">Theme</a>
-                        <a className="nav-item nav-link pr-4" href="#">Store</a>
-                        <a className="nav-item nav-link pr-4" href="#">Apps</a>
-                        <a className="nav-item nav-link pr-4" href="#">Settings</a>
-                        <a className="nav-item nav-link" href="#" tabIndex="-1" aria-disabled="true">
+                        <a className="nav-item nav-link pr-4"
+                           href="#">
+                            Build
+                        </a>
+                        <a className="nav-item nav-link active pr-4"
+                           href="#">
+                            Pages
+                        </a>
+                        <a className="nav-item nav-link pr-4"
+                           href="#">
+                            Theme
+                        </a>
+                        <a className="nav-item nav-link pr-4"
+                           href="#">
+                            Store
+                        </a>
+                        <a className="nav-item nav-link pr-4"
+                           href="#">
+                            Apps
+                        </a>
+                        <a className="nav-item nav-link pr-4"
+                           href="#">
+                            Settings
+                        </a>
+                        <a className="nav-item nav-link"
+                           href="#"
+                           tabIndex="-1"
+                           aria-disabled="true">
                             <i className="fas fa-plus fa-lg"/>
                         </a>
                     </div>
@@ -31,11 +57,14 @@ const CourseEditor = ({history, match}) => {
             <div className="container-fluid">
                 <div className="row px-3">
                     <div className="col-sm-2 col-md-3 col-xl-2 px-0 py-3">
-                        <button className="btn btn-block d-md-none border mb-1" type="button" data-toggle="collapse"
+                        <button className="btn btn-block d-md-none border mb-1"
+                                type="button"
+                                data-toggle="collapse"
                                 data-target="#wbdv-module-list">
                             <i className="fas fa-chevron-circle-down fa-lg wbdv-fas-color"/>
                         </button>
-                        <div id="wbdv-module-list" className="collapse d-md-block">
+                        <div id="wbdv-module-list"
+                             className="collapse d-md-block">
                             <ul className="list-group wbdv-blueboard-bg-comp-color p-2">
                                 <li className="list-group-item list-group-item-action d-flex align-items-center justify-content-between rounded mb-2">
                                     Module 1 - jQuery
@@ -74,19 +103,32 @@ const CourseEditor = ({history, match}) => {
                     <div className="col-sm-10 col-md-9 col-xl-10 px-2 py-3">
                         <ul className="nav nav-pills nav-fill">
                             <li className="nav-item">
-                                <a className="nav-link active" href="#">Topic 1</a>
+                                <a className="nav-link active"
+                                   href="#">
+                                    Topic 1
+                                </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Topic 2</a>
+                                <a className="nav-link"
+                                   href="#">
+                                    Topic 2
+                                </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Topic 3</a>
+                                <a className="nav-link"
+                                   href="#">
+                                    Topic 3
+                                </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link disabled" href="#">Topic 4</a>
+                                <a className="nav-link disabled"
+                                   href="#">
+                                    Topic 4
+                                </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#"><i
+                                <a className="nav-link"
+                                   href="#"><i
                                     className="fas fa-plus-circle d-inline fa-lg"/></a>
                             </li>
                         </ul>
