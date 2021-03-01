@@ -19,7 +19,7 @@ const CourseGrid = (props) => {
                 <div className="col-sm-4 h5 wbdv-standalone-text-color text-right">
                     <i className="fas fa-folder fa-lg wbdv-fas-color pr-4"/>
                     <i className="fas fa-sort-alpha-down-alt fa-lg wbdv-fas-color pr-4"/>
-                    <Link to="/">
+                    <Link to="/courses/table">
                         <i className="fas fa-list fa-lg wbdv-fas-color pr-2"/>
                     </Link>
                 </div>

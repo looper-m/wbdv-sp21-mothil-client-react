@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import {Route} from "react-router-dom"
+import {Route, withRouter} from "react-router-dom"
 import CourseService from "../../services/course-service"
 import DismissibleAlert, {alertType} from "../dismissible-alert"
 import LoadingBar from "react-top-loading-bar"
@@ -120,6 +120,10 @@ class CourseManager extends Component {
         this.findAllCourses()
     }
 
+    goHome = () => {
+        this.props.history.push("/")
+    }
+
     render() {
         const {alert} = this.state;
 
@@ -134,10 +138,8 @@ class CourseManager extends Component {
                 <nav className="navbar sticky-top navbar-expand-md navbar-dark bg-primary">
                     <div className="d-flex flex-grow-1">
                         <span className="navbar-brand mr-0 mr-md-5">
-                            <a className="mr-3"
-                               href="#">
-                                <span className="fas fa-bars fa-lg wbdv-overlay-text-color"/>
-                            </a>
+                            <span onClick={this.goHome}
+                                  className="fas fa-arrow-left fa-lg wbdv-overlay-text-color mr-3"/>
                             <h3 className="d-none d-md-inline wbdv-overlay-text-color align-bottom">
                                 Course Manager
                             </h3>
@@ -173,7 +175,7 @@ class CourseManager extends Component {
                                     onChangeTitle={this.handleUpdateCourseChange}
                                     onUpdate={this.handleUpdateCourse}/>
                     </Route>
-                    <Route path="/" exact>
+                    <Route path="/courses/table" exact>
                         <CourseTable courses={this.state.courses}
                                      onDelete={this.handleDeleteCourse}
                                      onChangeTitle={this.handleUpdateCourseChange}
@@ -189,4 +191,4 @@ class CourseManager extends Component {
     }
 }
 
-export default CourseManager
+export default withRouter(CourseManager)

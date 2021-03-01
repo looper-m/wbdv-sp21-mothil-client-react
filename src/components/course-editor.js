@@ -1,12 +1,16 @@
-const CourseEditor = ({history, match}) => {
+import {useHistory} from 'react-router-dom'
+
+const CourseEditor = (props) => {
+    const history = useHistory()
+
     return (
         <div>
             <nav className="navbar sticky-top navbar-expand-md navbar-dark bg-primary flex-nowrap">
                 <span className="navbar-brand mr-3 wbdv-text-truncate">
                     <i className="fas fa-times fa-lg wbdv-overlay-text-color mr-3"
-                       onClick={() => history.goBack()}/>
+                       onClick={history.goBack}/>
                     <h3 className="d-inline wbdv-overlay-text-color align-bottom">
-                        {match.params.title}
+                        {props.match.params.title}
                     </h3>
                 </span>
                 <button className="navbar-toggler border-0"

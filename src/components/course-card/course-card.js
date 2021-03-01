@@ -25,7 +25,7 @@ const CourseCard = (props) => {
         props.setEditId(props.course._id)
     }
 
-    const pathToCourseEditor = `/courses/course-editor/${props.course.title}/${props.course._id}`
+    const pathToCourseEditor = `/courses/grid/course-editor/${props.course.title}`
 
     return (
         <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2">

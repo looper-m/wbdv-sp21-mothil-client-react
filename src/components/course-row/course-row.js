@@ -17,7 +17,7 @@ const CourseRow = (props) => {
         props.setEditId(props.course._id)
     }
 
-    const pathToCourseEditor = `/courses/course-editor/${props.course.title}/${props.course._id}`
+    const pathToCourseEditor = `/courses/table/course-editor/${props.course.title}`
 
     return (
         <tr className="align-middle border-top border-bottom">
