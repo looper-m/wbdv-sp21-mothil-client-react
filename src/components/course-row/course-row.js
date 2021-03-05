@@ -1,7 +1,7 @@
-import {Link} from "react-router-dom"
-import Moment from "react-moment"
-import "moment-timezone"
-import "./course-row.css"
+import {Link} from "react-router-dom";
+import Moment from "react-moment";
+import "moment-timezone";
+import "./course-row.css";
 
 const CourseRow = (props) => {
     const onUpdate = () => {
@@ -17,7 +17,7 @@ const CourseRow = (props) => {
         props.setEditId(props.course._id)
     }
 
-    const pathToCourseEditor = `/courses/table/course-editor/${props.course.title}`
+    const pathToCourseEditor = `/courses/table/edit/${props.course.title}/${props.course._id}`
 
     return (
         <tr className="align-middle border-top border-bottom">

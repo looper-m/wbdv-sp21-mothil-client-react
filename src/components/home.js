@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {logo_banner} from '../images/blueboard'
+import {logo_banner} from "../images/blueboard";
 
 const Home = () => {
     return (

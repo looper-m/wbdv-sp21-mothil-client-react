@@ -1,7 +1,7 @@
-import {useState} from "react"
-import {Link} from "react-router-dom"
-import CourseCard from "../course-card/course-card"
-import "./course-grid.css"
+import {useState} from "react";
+import {Link} from "react-router-dom";
+import CourseCard from "../course-card/course-card";
+import "./course-grid.css";
 
 const CourseGrid = (props) => {
     const [editId, setEditId] = useState(null)

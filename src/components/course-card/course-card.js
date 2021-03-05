@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
-import * as images from '../../images/web-courses'
-import './course-card.css'
+import * as images from "../../images/web-courses";
+import "./course-card.css";
 
 const CourseCard = (props) => {
     let imageSource = images.noImage
@@ -25,7 +25,7 @@ const CourseCard = (props) => {
         props.setEditId(props.course._id)
     }
 
-    const pathToCourseEditor = `/courses/grid/course-editor/${props.course.title}`
+    const pathToCourseEditor = `/courses/grid/edit/${props.course.title}/${props.course._id}`
 
     return (
         <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2">

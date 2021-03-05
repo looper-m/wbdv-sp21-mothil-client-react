@@ -46,3 +46,12 @@ code {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.wbdv-blend-text-link {
+    color: inherit !important;
+    text-decoration: inherit !important;
+}
+
+.wbdv-curved-border {
+    border-radius: 50%;
+}

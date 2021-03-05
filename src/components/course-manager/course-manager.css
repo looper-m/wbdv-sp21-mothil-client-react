@@ -1,14 +1,14 @@
 .wbdv-input-group-align {
-    padding-top: inherit;
-    border-top-width: medium;
+    padding-top: inherit !important;
+    border-top-width: medium !important;
 }
 
 .wbdv-add-course-icon-color {
-    color: orange;
+    color: orange !important;
 }
 
 .wbdv-rm-round-corners {
-    border-radius: 0;
+    border-radius: 0 !important;
 }
 
 .wbdv-float-btn {

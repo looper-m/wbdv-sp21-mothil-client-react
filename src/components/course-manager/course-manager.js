@@ -1,11 +1,11 @@
-import React, {Component} from "react"
-import {Route, withRouter} from "react-router-dom"
-import CourseService from "../../services/course-service"
-import DismissibleAlert, {alertType} from "../dismissible-alert"
-import LoadingBar from "react-top-loading-bar"
-import CourseTable from "../course-table/course-table"
-import CourseGrid from "../course-grid/course-grid"
-import "./course-manager.css"
+import React, {Component} from "react";
+import {Route, withRouter} from "react-router-dom";
+import CourseService from "../../services/course-service";
+import DismissibleAlert, {alertType} from "../dismissible-alert";
+import LoadingBar from "react-top-loading-bar";
+import CourseTable from "../course-table/course-table";
+import CourseGrid from "../course-grid/course-grid";
+import "./course-manager.css";
 
 class CourseManager extends Component {
     constructor(props) {
@@ -164,7 +164,8 @@ class CourseManager extends Component {
                 </nav>
                 <div className="container-fluid">
                     <br/>
-                    {alert && <DismissibleAlert type={this.state.alert.type}
+                    {
+                        alert && <DismissibleAlert type={this.state.alert.type}
                                                 message={this.state.alert.message}
                                                 dismiss={this.dismissAlert}/>
                     }
