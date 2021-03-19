@@ -5,15 +5,17 @@ import ModuleList from "./module-list";
 import moduleReducer from "../../reducers/module-reducer";
 import lessonReducer from "../../reducers/lesson-reducer";
 import topicReducer from "../../reducers/topic-reducer";
+import widgetReducer from "../../reducers/widget-reducer";
 import useLocationBlocker from "../location-blocker";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
+import WidgetList from "./widgets/widget-list"
 import React, {useEffect, useState, useRef} from "react";
 import LoadingBar from "react-top-loading-bar";
 
 const store = createStore(
     combineReducers({
-        moduleReducer, lessonReducer, topicReducer
+        moduleReducer, lessonReducer, topicReducer, widgetReducer
     })
 )
 
@@ -93,8 +95,11 @@ const CourseEditor = (props) => {
                         </div>
                         <div className="col-sm-10 col-md-9 col-xl-10 px-2 py-3">
                             <LessonTabs loadingBar={loadingRef}/>
-                            <div className="row border border-top-0 shadow-sm mx-0">
+                            <div className="row border border-top-0 border-bottom-0 mx-0">
                                 <TopicPills loadingBar={loadingRef}/>
+                            </div>
+                            <div className="row border border-top-0 shadow-sm mx-0">
+                                <WidgetList loadingBar={loadingRef}/>
                             </div>
                         </div>
                     </div>

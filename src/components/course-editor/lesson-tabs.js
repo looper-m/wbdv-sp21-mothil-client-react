@@ -77,7 +77,7 @@ const stateToPropertiesMapper = (state) => ({
 
 const dispatchToPropertiesMapper = (dispatch) => ({
     createLesson: (moduleId, loadingBar) => {
-        if (moduleId === undefined) return //todo remove
+        if (moduleId === undefined) return
         loadingBar.current.continuousStart()
         lessonService.createLesson(moduleId, {title: "New Lesson"})
             .then(lesson => dispatch({type: "CREATE_LESSON", lesson}))
