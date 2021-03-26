@@ -1,5 +1,5 @@
-// const WIDGETS_URL = `http://localhost:8080/api`
-const WIDGETS_URL = `https://cs5610-sp21-mothil-server-java.herokuapp.com/api`
+const WIDGETS_URL = `http://localhost:8080/api`
+// const WIDGETS_URL = `https://cs5610-sp21-mothil-server-java.herokuapp.com/api`
 
 export const createWidget = (topicId, widget) =>
     fetch(`${WIDGETS_URL}/topics/${topicId}/widgets`, {

@@ -2,8 +2,10 @@ import {connect} from "react-redux";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import widgetService from "../../../services/widget-service";
-import HeadingWidget from "./HeadingWidget";
-import ParagraphWidget from "./ParagraphWidget";
+import HeadingWidget from "./heading-widget";
+import ParagraphWidget from "./paragraph-widget";
+import ListWidget from "./list-widget";
+import ImageWidget from "./image-widget";
 
 const WidgetList = (
     {
@@ -71,6 +73,8 @@ const WidgetList = (
                                                 className="form-control mb-3">
                                             <option value="HEADING">Heading</option>
                                             <option value="PARAGRAPH">Paragraph</option>
+                                            <option value="LIST">List</option>
+                                            <option value="IMAGE">Image</option>
                                         </select>
                                     }
                                     <HeadingWidget editing={editWidget.id === widget.id}
@@ -81,6 +85,14 @@ const WidgetList = (
                                                      widget={widget}
                                                      editType={editWidget.type}
                                                      setWidget={setEditWidget}/>
+                                    <ListWidget editing={editWidget.id === widget.id}
+                                                widget={widget}
+                                                editType={editWidget.type}
+                                                setWidget={setEditWidget}/>
+                                    <ImageWidget editing={editWidget.id === widget.id}
+                                                 widget={widget}
+                                                 editType={editWidget.type}
+                                                 setWidget={setEditWidget}/>
                                 </span>
                                 {
                                     editWidget.id === widget.id ?
