@@ -1,23 +1,10 @@
 import {Link, useHistory, useParams} from "react-router-dom";
-import {Provider} from "react-redux";
-import {combineReducers, createStore} from "redux";
 import ModuleList from "./module-list";
-import moduleReducer from "../../reducers/module-reducer";
-import lessonReducer from "../../reducers/lesson-reducer";
-import topicReducer from "../../reducers/topic-reducer";
-import widgetReducer from "../../reducers/widget-reducer";
-import useLocationBlocker from "../location-blocker";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
 import WidgetList from "./widgets/widget-list"
 import React, {useEffect, useState, useRef} from "react";
 import LoadingBar from "react-top-loading-bar";
-
-const store = createStore(
-    combineReducers({
-        moduleReducer, lessonReducer, topicReducer, widgetReducer
-    })
-)
 
 const CourseEditor = (props) => {
     const history = useHistory()
@@ -33,7 +20,7 @@ const CourseEditor = (props) => {
     }, [])
 
     return (
-        <Provider store={store}>
+        <>
             <LoadingBar
                 color="orange"
                 shadow="true"
@@ -105,7 +92,7 @@ const CourseEditor = (props) => {
                     </div>
                 </div>
             }
-        </Provider>
+        </>
     )
 }
 
