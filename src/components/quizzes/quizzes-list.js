@@ -1,7 +1,7 @@
 import quizService from "../../services/quiz-service";
 import {connect} from "react-redux";
 import {Link, useParams} from "react-router-dom";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 const QuizzesList = (
     {
@@ -9,10 +9,25 @@ const QuizzesList = (
         findAllQuizzes
     }) => {
     const {courseId} = useParams()
+    const [bestScore, setBestScore] = useState(null)
 
     useEffect(() => {
         findAllQuizzes()
     }, [])
+
+    const handleGetScore = (quizId) => {
+        quizService.getBestAttempt(quizId)
+            .then(response => {
+                let current = {}
+                current[quizId] = response.length === 0 ? "Not Attempted" : Math.round(response[0].score)
+                setBestScore(prevState => (
+                    {
+                        ...prevState,
+                        ...current
+                    }
+                ))
+            })
+    }
 
     return (
         <>
@@ -33,10 +48,25 @@ const QuizzesList = (
                             <li className="list-group-item d-flex justify-content-between align-items-center wbdv-standalone-text-color"
                                 key={index}>
                                 <strong>{quiz.title}</strong>
-                                <Link to={`/courses/${courseId}/quizzes/${quiz.title}/${quiz._id}`}
-                                      className="btn btn-primary btn-sm">
-                                    Start
-                                </Link>
+                                <div>
+                                    {
+                                        bestScore && bestScore.hasOwnProperty(quiz._id) ?
+                                            <span className="badge badge-success badge-pill mr-4">
+                                                {bestScore[quiz._id]}
+                                            </span>
+                                            :
+
+                                            <button type="button"
+                                                    className="btn btn-outline-danger btn-sm mr-4"
+                                                    onClick={() => handleGetScore(quiz._id)}>
+                                                &nbsp;Best Attempt&nbsp;
+                                            </button>
+                                    }
+                                    <Link to={`/courses/${courseId}/quizzes/${quiz.title}/${quiz._id}`}
+                                          className="btn btn-primary btn-sm">
+                                        Start
+                                    </Link>
+                                </div>
                             </li>
                         )
                     }

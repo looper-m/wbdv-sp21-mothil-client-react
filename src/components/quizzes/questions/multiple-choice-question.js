@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const MultipleChoiceQuestion = ({question}) => {
+const MultipleChoiceQuestion = ({question, setAttempt}) => {
     const [answer, setAnswer] = useState("")
     const [graded, isGraded] = useState(false)
 
@@ -10,6 +10,7 @@ const MultipleChoiceQuestion = ({question}) => {
 
     const handleChoice = (choice) => {
         if (answer !== choice) {
+            setAttempt(question._id, choice)
             isGraded(false)
             setAnswer(choice)
         }
@@ -65,7 +66,7 @@ const MultipleChoiceQuestion = ({question}) => {
                 Your answer: <strong>{answer}</strong>
             </p>
             <button type="button"
-                    className="btn btn-success d-block"
+                    className="btn btn-outline-success d-block"
                     onClick={handleGrade}>
                 &nbsp;Grade&nbsp;
             </button>
